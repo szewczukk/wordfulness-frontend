@@ -1,3 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-export default () => <h1>Hello, world!</h1>;
+import { fetchLessons } from '../store/lessons/actions';
+import { Store } from '../store';
+
+import LessonCard from './LessonCard';
+
+export default () => {
+	const dispatch = useDispatch();
+	const lessons = useSelector((state: Store) => state.lessons);
+
+	useEffect(() => {
+		dispatch(fetchLessons());
+	}, [dispatch]);
+
+	return (
+		<>
+			{lessons ? (
+				lessons.map((lesson) => (
+					<LessonCard name={lesson.name} created={new Date(lesson.created)} />
+				))
+			) : (
+				<h1>No lessons!</h1>
+			)}
+		</>
+	);
+};
