@@ -11,7 +11,7 @@ export interface LessonState {
 }
 
 export const FETCH_CURRENT_LESSON_TYPE = 'FETCH_CURRENT_LESSON';
-export const SET_FETCHED_CURRENT_LESSON_TYPE = 'SET_FETCHED_LESSON';
+export const SET_FETCHED_CURRENT_LESSON_TYPE = 'SET_FETCHED_CURRENT_LESSON';
 
 export interface FetchCurrentLesson {
 	type: typeof FETCH_CURRENT_LESSON_TYPE;
