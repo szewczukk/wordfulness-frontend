@@ -18,7 +18,12 @@ export default () => {
 		<>
 			{lessons ? (
 				lessons.map((lesson) => (
-					<LessonCard name={lesson.name} created={new Date(lesson.created)} />
+					<LessonCard
+						key={lesson.id}
+						id={lesson.id}
+						name={lesson.name}
+						created={new Date(lesson.created)}
+					/>
 				))
 			) : (
 				<h1>No lessons!</h1>
