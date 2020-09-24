@@ -1,10 +1,11 @@
 import {
 	ADD_NEW_LESSON_TYPE,
+	DELETE_LESSON_TYPE,
 	FETCH_LESSONS_TYPE,
+	SET_FETCHED_LESSONS_TYPE,
 	LessonsActionTypes,
 	LessonsState,
 	PostLesson,
-	SET_FETCHED_LESSONS_TYPE,
 } from './types';
 
 export const fetchLessons = (): LessonsActionTypes => ({
@@ -20,5 +21,10 @@ export const setFetchedLessons = (
 
 export const addNewLesson = (payload: PostLesson): LessonsActionTypes => ({
 	type: ADD_NEW_LESSON_TYPE,
+	payload,
+});
+
+export const deleteLesson = (payload: number): LessonsActionTypes => ({
+	type: DELETE_LESSON_TYPE,
 	payload,
 });

@@ -13,6 +13,7 @@ export type LessonsState = Lesson[];
 export const FETCH_LESSONS_TYPE = 'FETCH_LESSONS';
 export const SET_FETCHED_LESSONS_TYPE = 'SET_FETCHED_LESSONS';
 export const ADD_NEW_LESSON_TYPE = 'ADD_NEW_LESSON';
+export const DELETE_LESSON_TYPE = 'DELETE_LESSON';
 
 export interface FetchLessonsAction {
 	type: typeof FETCH_LESSONS_TYPE;
@@ -28,7 +29,13 @@ export interface AddNewLessonAction {
 	payload: PostLesson;
 }
 
+export interface DeleteLessonAction {
+	type: typeof DELETE_LESSON_TYPE;
+	payload: number;
+}
+
 export type LessonsActionTypes =
 	| FetchLessonsAction
 	| SetFetchedLessonsAction
-	| AddNewLessonAction;
+	| AddNewLessonAction
+	| DeleteLessonAction;
