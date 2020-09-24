@@ -5,6 +5,7 @@ export interface Flashcard {
 }
 
 export interface LessonState {
+	id: number;
 	name: string;
 	created: string;
 	flashcards: Flashcard[];

@@ -24,6 +24,7 @@ function* fetchCurrentLesson(action: FetchCurrentLesson) {
 		const flashcardsResult = yield flashcardsResponse.json();
 
 		const result: LessonState = {
+			id: lessonResult.id,
 			name: lessonResult.name,
 			created: lessonResult.created,
 			flashcards: flashcardsResult,

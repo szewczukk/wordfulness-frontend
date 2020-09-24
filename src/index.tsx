@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import 'bulma/css/bulma.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import store from './store';
 import HomeScreen from './components/HomeScreen';
@@ -12,7 +14,6 @@ ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<BrowserRouter>
-				<Link to={'/'}>Home</Link>
 				<Switch>
 					<Route path={'/lesson/:id'}>
 						<CurrentLessonScreen />

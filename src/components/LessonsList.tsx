@@ -4,8 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchLessons } from '../store/lessons/actions';
 import { Store } from '../store';
 
-import LessonCard from './LessonCard';
-
 export default () => {
 	const dispatch = useDispatch();
 	const lessons = useSelector((state: Store) => state.lessons);
@@ -16,18 +14,20 @@ export default () => {
 
 	return (
 		<>
-			{lessons ? (
-				lessons.map((lesson) => (
-					<LessonCard
-						key={lesson.id}
-						id={lesson.id}
-						name={lesson.name}
-						created={new Date(lesson.created)}
-					/>
-				))
-			) : (
-				<h1>No lessons!</h1>
-			)}
+			{lessons
+				? lessons.map((lesson) => (
+						<a
+							className={'panel-block'}
+							key={lesson.id}
+							href={`/lesson/${lesson.id}`}
+						>
+							<span className="icon is-left">
+								<i className="fas fa-book" aria-hidden="true" />
+							</span>
+							{lesson.name}
+						</a>
+				  ))
+				: null}
 		</>
 	);
 };

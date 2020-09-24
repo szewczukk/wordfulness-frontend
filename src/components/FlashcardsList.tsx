@@ -18,22 +18,18 @@ export default () => {
 		dispatch(fetchCurrentLesson(id));
 	}, [dispatch, id]);
 
-	const { name, created, flashcards } = currentLesson;
+	const { flashcards } = currentLesson;
 
 	return (
-		<>
-			<h1>
-				{name} ({new Date(created).toLocaleString()})
-			</h1>
-			{flashcards ? (
-				flashcards.map((flashcard) => (
-					<p key={flashcard.id}>
-						{flashcard.back} - {flashcard.front}
-					</p>
-				))
-			) : (
-				<h1>No flashcards!</h1>
-			)}
-		</>
+		<table className={'table'}>
+			{flashcards
+				? flashcards.map((flashcard) => (
+						<tr key={flashcard.id}>
+							<td>{flashcard.back}</td>
+							<td>{flashcard.front}</td>
+						</tr>
+				  ))
+				: null}
+		</table>
 	);
 };

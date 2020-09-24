@@ -7,13 +7,17 @@ import { addNewLesson } from '../store/lessons/actions';
 const mapDispatchToProps = (dispatch: Dispatch) =>
 	bindActionCreators({ addNewLesson }, dispatch);
 
-type Props = ReturnType<typeof mapDispatchToProps>;
+type Props = {
+	toggleShownModal: () => void;
+};
+
+type AllProps = ReturnType<typeof mapDispatchToProps> & Props;
 
 type State = {
 	name: string;
 };
 
-class AddNewLessonForm extends Component<Props, State> {
+class AddNewLessonForm extends Component<AllProps, State> {
 	state = {
 		name: '',
 	};
@@ -31,14 +35,47 @@ class AddNewLessonForm extends Component<Props, State> {
 	handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
 		ev.preventDefault();
 
+		this.props.toggleShownModal();
 		this.props.addNewLesson({ name: this.state.name });
+
+		this.setState({ name: '' });
+	};
+
+	closeModal = (ev: React.MouseEvent<HTMLButtonElement>) => {
+		ev.preventDefault();
+
+		this.props.toggleShownModal();
 	};
 
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
-				<input type={'text'} name={'name'} onChange={this.handleTextInput} />
-				<input type={'submit'} />
+				<div className={'field'}>
+					<div className={'control'}>
+						<input
+							className={'input'}
+							type={'text'}
+							name={'name'}
+							onChange={this.handleTextInput}
+							placeholder={'Nazwa lekcji'}
+							autoComplete={'off'}
+						/>
+					</div>
+				</div>
+				<div className={'level'}>
+					<div className={'level-left'}>
+						<input
+							className={'button is-primary'}
+							type={'submit'}
+							value={'Dodaj'}
+						/>
+					</div>
+					<div className={'level-right'}>
+						<button className={'button is-danger'} onClick={this.closeModal}>
+							Zamknij
+						</button>
+					</div>
+				</div>
 			</form>
 		);
 	}
