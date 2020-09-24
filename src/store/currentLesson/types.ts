@@ -2,6 +2,13 @@ export interface Flashcard {
 	id: number;
 	front: string;
 	back: string;
+	lesson: number;
+}
+
+export interface PostFlashcard {
+	front: string;
+	back: string;
+	lesson: number;
 }
 
 export interface LessonState {
@@ -13,6 +20,8 @@ export interface LessonState {
 
 export const FETCH_CURRENT_LESSON_TYPE = 'FETCH_CURRENT_LESSON';
 export const SET_FETCHED_CURRENT_LESSON_TYPE = 'SET_FETCHED_CURRENT_LESSON';
+export const ADD_FLASHCARD_TO_CURRENT_LESSON_TYPE =
+	'ADD_FLASHCARD_TO_CURRENT_LESSON';
 
 export interface FetchCurrentLesson {
 	type: typeof FETCH_CURRENT_LESSON_TYPE;
@@ -24,4 +33,12 @@ export interface SetFetchedCurrentLesson {
 	payload: LessonState;
 }
 
-export type LessonActionTypes = FetchCurrentLesson | SetFetchedCurrentLesson;
+export interface AddFlashcardToCurrentLesson {
+	type: typeof ADD_FLASHCARD_TO_CURRENT_LESSON_TYPE;
+	payload: PostFlashcard;
+}
+
+export type LessonActionTypes =
+	| FetchCurrentLesson
+	| SetFetchedCurrentLesson
+	| AddFlashcardToCurrentLesson;

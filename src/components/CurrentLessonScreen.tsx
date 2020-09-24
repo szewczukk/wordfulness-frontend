@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FlashcardsList from './FlashcardsList';
 import { deleteLesson } from '../store/lessons/actions';
 import { Store } from '../store';
+import NewFlashcardForm from './NewFlashcardForm';
 
 export default () => {
 	const [move, setMove] = useState(false);
@@ -24,7 +25,10 @@ export default () => {
 			<div className={'container'}>
 				<h1 className={'title'}>{name}</h1>
 				<p className={'subtitle'}>
-					Utworzono {new Date(created).toLocaleString()}
+					Utworzono{' '}
+					<span className={'has-text-primary'}>
+						{new Date(created).toLocaleString()}
+					</span>
 				</p>
 				<div className={'columns'}>
 					<div className={'column is-one-third'}>
@@ -49,7 +53,10 @@ export default () => {
 							</div>
 						</div>
 					</div>
-					<FlashcardsList />
+					<div className={'column'}>
+						<FlashcardsList />
+						<NewFlashcardForm />
+					</div>
 				</div>
 			</div>
 		</section>

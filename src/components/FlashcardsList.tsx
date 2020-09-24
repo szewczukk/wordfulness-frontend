@@ -21,15 +21,17 @@ export default () => {
 	const { flashcards } = currentLesson;
 
 	return (
-		<table className={'table'}>
-			{flashcards
-				? flashcards.map((flashcard) => (
-						<tr key={flashcard.id}>
-							<td>{flashcard.back}</td>
-							<td>{flashcard.front}</td>
-						</tr>
-				  ))
-				: null}
+		<table className={'table'} style={{ width: '50%' }}>
+			<tbody>
+				{flashcards
+					? flashcards.map((flashcard) => (
+							<tr key={flashcard.id}>
+								<td>{flashcard.back}</td>
+								<td>{flashcard.front}</td>
+							</tr>
+					  ))
+					: null}
+			</tbody>
 		</table>
 	);
 };

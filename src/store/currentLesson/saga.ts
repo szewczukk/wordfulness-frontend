@@ -1,11 +1,16 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, takeEvery } from 'redux-saga/effects';
 
 import {
+	ADD_FLASHCARD_TO_CURRENT_LESSON_TYPE,
 	FETCH_CURRENT_LESSON_TYPE,
+	AddFlashcardToCurrentLesson,
 	FetchCurrentLesson,
 	LessonState,
 } from './types';
-import { setFetchedCurrentLesson } from './actions';
+import {
+	setFetchedCurrentLesson,
+	fetchCurrentLesson as fetchCurrentLessonAction,
+} from './actions';
 
 function* fetchCurrentLesson(action: FetchCurrentLesson) {
 	try {
@@ -36,6 +41,34 @@ function* fetchCurrentLesson(action: FetchCurrentLesson) {
 	}
 }
 
+function* addFlashcardToCurrentLesson(action: AddFlashcardToCurrentLesson) {
+	try {
+		yield call(fetch, 'http://127.0.0.1:8000/api/flashcards/', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(action.payload),
+		});
+
+		const ac = fetchCurrentLessonAction(
+			action.payload.lesson.toString(),
+		) as FetchCurrentLesson;
+
+		yield call(fetchCurrentLesson, ac);
+	} catch (e) {
+		console.error(e);
+	}
+}
+
 export function* fetchCurrentLessonSaga() {
 	yield takeLatest(FETCH_CURRENT_LESSON_TYPE, fetchCurrentLesson);
+}
+
+export function* addFlashcardToCurrentLessonSaga() {
+	yield takeEvery(
+		ADD_FLASHCARD_TO_CURRENT_LESSON_TYPE,
+		addFlashcardToCurrentLesson,
+	);
 }
