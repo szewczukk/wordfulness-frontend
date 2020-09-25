@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchCurrentLesson } from '../store/currentLesson/actions';
 import { Store } from '../store';
+import FlashcardRow from './FlashcardRow';
 
 interface ParamTypes {
 	id: string;
@@ -21,14 +22,11 @@ export default () => {
 	const { flashcards } = currentLesson;
 
 	return (
-		<table className={'table'} style={{ width: '50%' }}>
+		<table className={'table is-hoverable is-fullwidth'}>
 			<tbody>
 				{flashcards
 					? flashcards.map((flashcard) => (
-							<tr key={flashcard.id}>
-								<td>{flashcard.back}</td>
-								<td>{flashcard.front}</td>
-							</tr>
+							<FlashcardRow key={flashcard.id} {...flashcard} />
 					  ))
 					: null}
 			</tbody>

@@ -53,7 +53,7 @@ export default () => {
 							</div>
 						</div>
 					</div>
-					<div className={'column'}>
+					<div className={'column is-two-fifths'}>
 						<FlashcardsList />
 						<NewFlashcardForm />
 					</div>

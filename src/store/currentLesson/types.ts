@@ -22,6 +22,8 @@ export const FETCH_CURRENT_LESSON_TYPE = 'FETCH_CURRENT_LESSON';
 export const SET_FETCHED_CURRENT_LESSON_TYPE = 'SET_FETCHED_CURRENT_LESSON';
 export const ADD_FLASHCARD_TO_CURRENT_LESSON_TYPE =
 	'ADD_FLASHCARD_TO_CURRENT_LESSON';
+export const DELETE_FLASHCARD_FROM_CURRENT_LESSON_TYPE =
+	'DELETE_FLASHCARD_FROM_CURRENT_LESSON_TYPE';
 
 export interface FetchCurrentLesson {
 	type: typeof FETCH_CURRENT_LESSON_TYPE;
@@ -38,7 +40,13 @@ export interface AddFlashcardToCurrentLesson {
 	payload: PostFlashcard;
 }
 
+export interface DeleteFlashcardFromCurrentLesson {
+	type: typeof DELETE_FLASHCARD_FROM_CURRENT_LESSON_TYPE;
+	payload: number;
+}
+
 export type LessonActionTypes =
 	| FetchCurrentLesson
 	| SetFetchedCurrentLesson
-	| AddFlashcardToCurrentLesson;
+	| AddFlashcardToCurrentLesson
+	| DeleteFlashcardFromCurrentLesson;

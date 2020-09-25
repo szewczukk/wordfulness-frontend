@@ -1,5 +1,6 @@
 import {
 	ADD_FLASHCARD_TO_CURRENT_LESSON_TYPE,
+	DELETE_FLASHCARD_FROM_CURRENT_LESSON_TYPE,
 	FETCH_CURRENT_LESSON_TYPE,
 	LessonActionTypes,
 	LessonState,
@@ -23,5 +24,12 @@ export const addFlashcardToCurrentLesson = (
 	payload: PostFlashcard,
 ): LessonActionTypes => ({
 	type: ADD_FLASHCARD_TO_CURRENT_LESSON_TYPE,
+	payload,
+});
+
+export const deleteFlashcardFromCurrentLesson = (
+	payload: number,
+): LessonActionTypes => ({
+	type: DELETE_FLASHCARD_FROM_CURRENT_LESSON_TYPE,
 	payload,
 });

@@ -1,4 +1,4 @@
-import { call, put, takeLatest, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest, takeEvery, select } from 'redux-saga/effects';
 
 import {
 	ADD_FLASHCARD_TO_CURRENT_LESSON_TYPE,
@@ -6,6 +6,8 @@ import {
 	AddFlashcardToCurrentLesson,
 	FetchCurrentLesson,
 	LessonState,
+	DeleteFlashcardFromCurrentLesson,
+	DELETE_FLASHCARD_FROM_CURRENT_LESSON_TYPE,
 } from './types';
 import {
 	setFetchedCurrentLesson,
@@ -62,6 +64,30 @@ function* addFlashcardToCurrentLesson(action: AddFlashcardToCurrentLesson) {
 	}
 }
 
+function* deleteFlashcardFromCurrentLesson(
+	action: DeleteFlashcardFromCurrentLesson,
+) {
+	try {
+		yield call(
+			fetch,
+			`http://127.0.0.1:8000/api/flashcards/${action.payload}`,
+			{
+				method: 'DELETE',
+			},
+		);
+
+		const lessonId = yield select((store) => store.currentLesson.id);
+
+		const ac = fetchCurrentLessonAction(
+			lessonId.toString(),
+		) as FetchCurrentLesson;
+
+		yield call(fetchCurrentLesson, ac);
+	} catch (e) {
+		console.error(e);
+	}
+}
+
 export function* fetchCurrentLessonSaga() {
 	yield takeLatest(FETCH_CURRENT_LESSON_TYPE, fetchCurrentLesson);
 }
@@ -70,5 +96,12 @@ export function* addFlashcardToCurrentLessonSaga() {
 	yield takeEvery(
 		ADD_FLASHCARD_TO_CURRENT_LESSON_TYPE,
 		addFlashcardToCurrentLesson,
+	);
+}
+
+export function* deleteFlashcardToCurrentLessonSaga() {
+	yield takeEvery(
+		DELETE_FLASHCARD_FROM_CURRENT_LESSON_TYPE,
+		deleteFlashcardFromCurrentLesson,
 	);
 }
