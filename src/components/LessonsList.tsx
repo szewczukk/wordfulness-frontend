@@ -14,20 +14,22 @@ export default () => {
 
 	return (
 		<>
-			{lessons
-				? lessons.map((lesson) => (
-						<a
-							className={'panel-block'}
-							key={lesson.id}
-							href={`/lesson/${lesson.id}`}
-						>
-							<span className="icon is-left">
-								<i className="fas fa-book" aria-hidden="true" />
-							</span>
-							{lesson.name}
-						</a>
-				  ))
-				: null}
+			{lessons.length ? (
+				lessons.map((lesson) => (
+					<a
+						className={'panel-block'}
+						key={lesson.id}
+						href={`/lesson/${lesson.id}`}
+					>
+						<span className="icon is-left">
+							<i className="fas fa-book" aria-hidden="true" />
+						</span>
+						{lesson.name}
+					</a>
+				))
+			) : (
+				<p className={'panel-block'}>Brak lekcji</p>
+			)}
 		</>
 	);
 };

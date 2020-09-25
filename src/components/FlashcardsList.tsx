@@ -24,11 +24,13 @@ export default () => {
 	return (
 		<table className={'table is-hoverable is-fullwidth'}>
 			<tbody>
-				{flashcards
-					? flashcards.map((flashcard) => (
-							<FlashcardRow key={flashcard.id} {...flashcard} />
-					  ))
-					: null}
+				{flashcards.length > 0 ? (
+					flashcards.map((flashcard) => (
+						<FlashcardRow key={flashcard.id} {...flashcard} />
+					))
+				) : (
+					<p>Brak fiszek</p>
+				)}
 			</tbody>
 		</table>
 	);
