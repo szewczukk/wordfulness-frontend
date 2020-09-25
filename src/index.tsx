@@ -9,14 +9,20 @@ import store from './store';
 import HomeScreen from './components/HomeScreen';
 import CurrentLessonScreen from './components/CurrentLessonScreen';
 import * as serviceWorker from './serviceWorker';
+import Header from './components/Header';
+import LoginScreen from './components/LoginScreen';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<BrowserRouter>
+				<Header />
 				<Switch>
 					<Route path={'/lesson/:id'}>
 						<CurrentLessonScreen />
+					</Route>
+					<Route path={'/login'}>
+						<LoginScreen />
 					</Route>
 					<Route exact path={'/'}>
 						<HomeScreen />
