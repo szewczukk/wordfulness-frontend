@@ -32,11 +32,13 @@ export default () => {
 					</span>
 				</p>
 				<div className={'columns'}>
-					<CurrentLessonControls
-						handleDeleteButton={handleDeleteButton}
-						setMove={setMove}
-					/>
-					<div className={'column is-two-fifths'}>
+					<div className={'column is-two-third'}>
+						<CurrentLessonControls
+							handleDeleteButton={handleDeleteButton}
+							setMove={setMove}
+						/>
+					</div>
+					<div className={'column'}>
 						<FlashcardsList />
 						<NewFlashcardForm />
 					</div>
