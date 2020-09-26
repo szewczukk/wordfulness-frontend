@@ -1,8 +1,14 @@
 import React from 'react';
+import LoginForm from './LoginForm';
 
 export default () => (
-	<>
-		<h1>Login</h1>
-		<a href={'/'}>Return</a>
-	</>
+	<section className={'section'}>
+		<div className={'content'}>
+			<div className={'columns is-centered'}>
+				<div className={'column is-one-third'}>
+					<LoginForm />
+				</div>
+			</div>
+		</div>
+	</section>
 );

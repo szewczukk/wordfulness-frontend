@@ -10,6 +10,7 @@ import {
 	deleteFlashcardToCurrentLessonSaga,
 	fetchCurrentLessonSaga,
 } from './currentLesson/saga';
+import { fetchJwtTokenSaga } from './currentUser/saga';
 
 export default function* () {
 	yield fork(fetchLessonsSaga);
@@ -18,4 +19,5 @@ export default function* () {
 	yield fork(deleteLessonSaga);
 	yield fork(addFlashcardToCurrentLessonSaga);
 	yield fork(deleteFlashcardToCurrentLessonSaga);
+	yield fork(fetchJwtTokenSaga);
 }

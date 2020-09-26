@@ -1,34 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
+
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-import store from './store';
-import HomeScreen from './components/HomeScreen';
-import CurrentLessonScreen from './components/CurrentLessonScreen';
 import * as serviceWorker from './serviceWorker';
-import Header from './components/Header';
-import LoginScreen from './components/LoginScreen';
+import App from './components/Router';
+import { Provider } from 'react-redux';
+import store from './store';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<BrowserRouter>
-				<Header />
-				<Switch>
-					<Route path={'/lesson/:id'}>
-						<CurrentLessonScreen />
-					</Route>
-					<Route path={'/login'}>
-						<LoginScreen />
-					</Route>
-					<Route exact path={'/'}>
-						<HomeScreen />
-					</Route>
-				</Switch>
-			</BrowserRouter>
+			<App />
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root'),
