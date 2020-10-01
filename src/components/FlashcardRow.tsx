@@ -1,7 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteFlashcardFromCurrentLesson } from '../store/currentLesson/actions';
+import { Store } from '../store';
 
 type Props = {
 	id: number;
@@ -11,6 +12,7 @@ type Props = {
 
 export default ({ id, back, front }: Props) => {
 	const dispatch = useDispatch();
+	const { user } = useSelector((state: Store) => state);
 
 	const handleClick = () => {
 		dispatch(deleteFlashcardFromCurrentLesson(id));
@@ -20,14 +22,16 @@ export default ({ id, back, front }: Props) => {
 		<tr>
 			<td>{back}</td>
 			<td>{front}</td>
-			<td>
-				<button
-					className={'button is-danger is-outlined'}
-					onClick={handleClick}
-				>
-					Usuń
-				</button>
-			</td>
+			{user.usertype !== 'ST' && (
+				<td>
+					<button
+						className={'button is-danger is-outlined'}
+						onClick={handleClick}
+					>
+						Usuń
+					</button>
+				</td>
+			)}
 		</tr>
 	);
 };

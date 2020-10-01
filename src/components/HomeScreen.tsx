@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import LessonsList from './LessonsList';
 import AddNewLessonForm from './AddNewLessonForm';
+import { Store } from '../store';
 
 export default () => {
 	const [modalState, setModalState] = useState(false);
+	const { user } = useSelector((state: Store) => state);
 
 	const toggleShownModal = () => {
 		setModalState(!modalState);
@@ -15,14 +18,16 @@ export default () => {
 			<article className={'container panel is-primary column is-4'}>
 				<p className={'panel-heading'}>Dostępne lekcje:</p>
 				<LessonsList />
-				<div className={'panel-block'}>
-					<button
-						className={'button is-fullwidth is-link'}
-						onClick={toggleShownModal}
-					>
-						Nowa lekcja
-					</button>
-				</div>
+				{user.usertype !== 'ST' && (
+					<div className={'panel-block'}>
+						<button
+							className={'button is-fullwidth is-link'}
+							onClick={toggleShownModal}
+						>
+							Nowa lekcja
+						</button>
+					</div>
+				)}
 				<div className={`modal ${modalState && 'is-active'}`}>
 					<div className={'modal-background'} />
 					<div className={'modal-content'}>

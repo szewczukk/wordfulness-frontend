@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Store } from '../store';
 
 type Props = {
 	setMove: (arg: boolean) => void;
@@ -7,6 +9,8 @@ type Props = {
 
 export default (props: Props) => {
 	const { setMove, handleDeleteButton } = props;
+
+	const { user } = useSelector((state: Store) => state);
 
 	return (
 		<div className={'level'}>
@@ -19,11 +23,13 @@ export default (props: Props) => {
 						Powrót
 					</button>
 				</div>
-				<div className={'level-item'}>
-					<button className={'button is-danger'} onClick={handleDeleteButton}>
-						Usuń
-					</button>
-				</div>
+				{user.usertype !== 'ST' && (
+					<div className={'level-item'}>
+						<button className={'button is-danger'} onClick={handleDeleteButton}>
+							Usuń
+						</button>
+					</div>
+				)}
 			</div>
 		</div>
 	);

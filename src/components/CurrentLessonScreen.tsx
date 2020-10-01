@@ -11,7 +11,8 @@ import CurrentLessonControls from './CurrentLessonControls';
 export default () => {
 	const dispatch = useDispatch();
 	const [move, setMove] = useState(false);
-	const currentLesson = useSelector((state: Store) => state.currentLesson);
+	const { currentLesson } = useSelector((state: Store) => state);
+	const { user } = useSelector((state: Store) => state);
 
 	const { id, name, created } = currentLesson;
 
@@ -40,7 +41,7 @@ export default () => {
 					</div>
 					<div className={'column'}>
 						<FlashcardsList />
-						<NewFlashcardForm />
+						{user.usertype !== 'ST' && <NewFlashcardForm />}
 					</div>
 				</div>
 			</div>
