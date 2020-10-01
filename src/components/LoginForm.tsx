@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { bindActionCreators, Dispatch, compose } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import { fetchUserAndToken } from '../store/currentUser/actions';
 

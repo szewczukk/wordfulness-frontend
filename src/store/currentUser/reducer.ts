@@ -8,7 +8,7 @@ import {
 const initialState: CurrentUserState = {
 	token: undefined,
 	username: '',
-	id: -1,
+	usertype: '',
 };
 
 export default (

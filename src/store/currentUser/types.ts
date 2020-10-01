@@ -1,7 +1,7 @@
 export interface CurrentUserState {
 	token: string | undefined;
 	username: string;
-	id: number;
+	usertype: string;
 }
 
 export interface Credentials {

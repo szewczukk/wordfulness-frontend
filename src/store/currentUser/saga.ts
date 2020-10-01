@@ -28,8 +28,8 @@ function* fetchJwtToken(action: FetchUserAndToken) {
 
 		const user: CurrentUserState = {
 			token: result.token,
-			id: result.user.id,
 			username: result.user.username,
+			usertype: result.user.usertype,
 		};
 
 		yield put(setFetchedUserAndToken(user));

@@ -32,6 +32,7 @@ export default () => {
 					className="navbar-burger"
 					aria-label="menu"
 					aria-expanded="false"
+					href={'/'}
 				>
 					<span aria-hidden="true" />
 					<span aria-hidden="true" />
@@ -46,7 +47,7 @@ export default () => {
 								<span className="icon">
 									<i className="fas fa-user" />
 								</span>
-								<p>Witaj, {username}</p>
+								<p>Witaj, {username}!</p>
 							</div>
 							<div className={'navbar-item'}>
 								<div className={'buttons'}>
