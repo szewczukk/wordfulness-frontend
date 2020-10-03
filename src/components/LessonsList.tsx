@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { fetchLessons } from '../store/lessons/actions';
 import { Store } from '../store';
@@ -16,16 +17,16 @@ export default () => {
 		<>
 			{lessons.length ? (
 				lessons.map((lesson) => (
-					<a
+					<Link
 						className={'panel-block'}
 						key={lesson.id}
-						href={`/lesson/${lesson.id}`}
+						to={`/lesson/${lesson.id}`}
 					>
 						<span className="icon is-left">
 							<i className="fas fa-book" aria-hidden="true" />
 						</span>
 						{lesson.name}
-					</a>
+					</Link>
 				))
 			) : (
 				<p className={'panel-block'}>Brak lekcji</p>

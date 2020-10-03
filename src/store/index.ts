@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import lessonsReducer from './lessons/reducer';
 import currentLessonReducer from './currentLesson/reducer';
 import currentUserReducer from './currentUser/reducer';
+import learningSession from './learningSession/reducer';
 import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
 	lessons: lessonsReducer,
 	currentLesson: currentLessonReducer,
 	user: currentUserReducer,
+	learningSession,
 });
 
 export type Store = ReturnType<typeof rootReducer>;

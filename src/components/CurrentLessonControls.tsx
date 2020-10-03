@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { Store } from '../store';
 
 type Props = {
@@ -11,6 +13,7 @@ export default (props: Props) => {
 	const { setMove, handleDeleteButton } = props;
 
 	const { user } = useSelector((state: Store) => state);
+	const { id } = useSelector((state: Store) => state.currentLesson);
 
 	return (
 		<div className={'level'}>
@@ -23,13 +26,17 @@ export default (props: Props) => {
 						Powrót
 					</button>
 				</div>
-				{user.usertype !== 'ST' && (
-					<div className={'level-item'}>
+				<div className={'level-item'}>
+					{user.usertype !== 'ST' ? (
 						<button className={'button is-danger'} onClick={handleDeleteButton}>
 							Usuń
 						</button>
-					</div>
-				)}
+					) : (
+						<Link className={'button is-success'} to={`/learn/${id}`}>
+							Ucz się
+						</Link>
+					)}
+				</div>
 			</div>
 		</div>
 	);
