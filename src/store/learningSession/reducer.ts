@@ -7,6 +7,8 @@ import {
 } from './types';
 import { Flashcard } from '../currentLesson/types';
 
+import shuffleArray from '../../helpers/shuffleArray';
+
 const initialState: State = {
 	flashcards: [],
 	completed: true,
@@ -31,7 +33,10 @@ export default (
 								back: element.front,
 							}));
 
-							const newFlashcards = [...flash, ...duplicated] as Flashcard[];
+							const newFlashcards = shuffleArray([
+								...flash,
+								...duplicated,
+							] as Flashcard[]);
 
 							const current = newFlashcards.pop();
 
@@ -39,7 +44,7 @@ export default (
 								...state,
 								flashcards: newFlashcards,
 								currentFlashcard: current,
-								completed: newFlashcards.length <= 0,
+								completed: typeof current === 'undefined',
 							};
 					}
 				}
@@ -52,7 +57,7 @@ export default (
 				return {
 					...state,
 					currentFlashcard: newCurrent,
-					completed: state.flashcards.length <= 0,
+					completed: typeof newCurrent === 'undefined',
 				};
 			} else {
 				const prevFlashcards = [...state.flashcards];
@@ -65,7 +70,6 @@ export default (
 					...state,
 					currentFlashcard: newCurrent,
 					flashcards: newFlashcards,
-					completed: newFlashcards.length <= 0,
 				};
 			}
 		default:

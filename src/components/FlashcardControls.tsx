@@ -40,7 +40,7 @@ export default (props: Props) => {
 							</div>
 							<div
 								className={'level-item'}
-								onClick={() => handleKnowingButtons(true)}
+								onClick={() => handleKnowingButtons(false)}
 							>
 								<button className={'button'}>Nie znam..</button>
 							</div>
