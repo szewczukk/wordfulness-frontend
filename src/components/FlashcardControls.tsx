@@ -21,17 +21,23 @@ export default (props: Props) => {
 		toggleExpose();
 	};
 
+	const length = initialLength - flashcards.length - 1;
+
 	return (
 		<div className={'box'}>
+			<p>
+				{length} / {initialLength}
+			</p>
 			<progress
 				className={'progress is-primary'}
-				value={initialLength - flashcards.length - 1}
+				value={length}
 				max={initialLength}
 			/>
 
 			<p onClick={toggleExpose}>
-				{exposed ? currentFlashcard?.back : currentFlashcard?.front}
+				{currentFlashcard?.front} {exposed && ` - ${currentFlashcard?.back}`}
 			</p>
+			<p></p>
 
 			<div className={'level'}>
 				<div className={'level-left'}>
