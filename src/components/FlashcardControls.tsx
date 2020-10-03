@@ -34,7 +34,7 @@ export default (props: Props) => {
 				max={initialLength}
 			/>
 
-			<p onClick={toggleExpose}>
+			<p onClick={toggleExpose} className={'is-size-2'}>
 				{currentFlashcard?.front} {exposed && ` - ${currentFlashcard?.back}`}
 			</p>
 			<p></p>
