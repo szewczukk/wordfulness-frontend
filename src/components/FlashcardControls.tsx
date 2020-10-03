@@ -37,7 +37,6 @@ export default (props: Props) => {
 			<p onClick={toggleExpose} className={'is-size-2'}>
 				{currentFlashcard?.front} {exposed && ` - ${currentFlashcard?.back}`}
 			</p>
-			<p></p>
 
 			<div className={'level'}>
 				<div className={'level-left'}>

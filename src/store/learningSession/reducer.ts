@@ -62,11 +62,12 @@ export default (
 					completed: typeof newCurrent === 'undefined',
 				};
 			} else {
-				const prevFlashcards = [...state.flashcards];
-				const oldCurrent = { ...state.currentFlashcard } as Flashcard;
+				const newFlashcards = [
+					...state.flashcards,
+					state.currentFlashcard as Flashcard,
+				];
 
-				const newCurrent = state.flashcards.pop();
-				const newFlashcards = [...prevFlashcards, oldCurrent];
+				const newCurrent = newFlashcards.pop();
 
 				return {
 					...state,
