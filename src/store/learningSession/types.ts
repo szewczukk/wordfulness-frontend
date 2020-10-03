@@ -7,6 +7,7 @@ export enum ReviewTypes {
 export interface State {
 	flashcards: Flashcard[];
 	completed: boolean;
+	initialLength: number;
 	currentFlashcard: Flashcard | undefined;
 }
 

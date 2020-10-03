@@ -13,6 +13,7 @@ const initialState: State = {
 	flashcards: [],
 	completed: true,
 	currentFlashcard: undefined,
+	initialLength: 0,
 };
 
 export default (
@@ -44,6 +45,7 @@ export default (
 								...state,
 								flashcards: newFlashcards,
 								currentFlashcard: current,
+								initialLength: newFlashcards.length + 1,
 								completed: typeof current === 'undefined',
 							};
 					}

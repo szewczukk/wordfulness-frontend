@@ -8,7 +8,7 @@ type Props = {};
 export default (props: Props) => {
 	const [exposed, setExpose] = useState(false);
 	const dispatch = useDispatch();
-	const { currentFlashcard } = useSelector(
+	const { currentFlashcard, initialLength, flashcards } = useSelector(
 		(state: Store) => state.learningSession,
 	);
 
@@ -23,9 +23,16 @@ export default (props: Props) => {
 
 	return (
 		<div className={'box'}>
+			<progress
+				className={'progress is-primary'}
+				value={initialLength - flashcards.length - 1}
+				max={initialLength}
+			/>
+
 			<p onClick={toggleExpose}>
 				{exposed ? currentFlashcard?.back : currentFlashcard?.front}
 			</p>
+
 			<div className={'level'}>
 				<div className={'level-left'}>
 					{exposed ? (
