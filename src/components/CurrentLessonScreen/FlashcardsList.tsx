@@ -6,14 +6,10 @@ import { Store } from 'store';
 import { fetchCurrentLesson } from 'store/currentLesson/actions';
 import FlashcardRow from './FlashcardRow';
 
-interface ParamTypes {
-	id: string;
-}
-
 export default () => {
 	const dispatch = useDispatch();
 	const currentLesson = useSelector((state: Store) => state.currentLesson);
-	const { id } = useParams<ParamTypes>();
+	const { id } = useParams<{ id: string }>();
 
 	useEffect(() => {
 		dispatch(fetchCurrentLesson(id));
