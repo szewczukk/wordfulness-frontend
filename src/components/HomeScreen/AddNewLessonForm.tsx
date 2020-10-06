@@ -7,17 +7,12 @@ import { addNewLesson } from 'store/lessons/actions';
 const mapDispatchToProps = (dispatch: Dispatch) =>
 	bindActionCreators({ addNewLesson }, dispatch);
 
-type Props = {
-	toggleShownModal: () => void;
-};
-
-type AllProps = ReturnType<typeof mapDispatchToProps> & Props;
-
+type Props = ReturnType<typeof mapDispatchToProps> & { onClose: () => void };
 type State = {
 	name: string;
 };
 
-class AddNewLessonForm extends Component<AllProps, State> {
+class AddNewLessonForm extends Component<Props, State> {
 	state = {
 		name: '',
 	};
@@ -35,16 +30,16 @@ class AddNewLessonForm extends Component<AllProps, State> {
 	handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
 		ev.preventDefault();
 
-		this.props.toggleShownModal();
+		this.props.onClose();
 		this.props.addNewLesson({ name: this.state.name });
 
 		this.setState({ name: '' });
 	};
 
-	closeModal = (ev: React.MouseEvent<HTMLButtonElement>) => {
+	handleClose = (ev: React.MouseEvent<HTMLButtonElement>) => {
 		ev.preventDefault();
 
-		this.props.toggleShownModal();
+		this.props.onClose();
 	};
 
 	render() {
@@ -71,7 +66,7 @@ class AddNewLessonForm extends Component<AllProps, State> {
 						/>
 					</div>
 					<div className={'level-right'}>
-						<button className={'button is-danger'} onClick={this.closeModal}>
+						<button className={'button is-danger'} onClick={this.handleClose}>
 							Zamknij
 						</button>
 					</div>

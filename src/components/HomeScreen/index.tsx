@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 
 import { Store } from 'store';
 import LessonsList from './LessonsList';
-import AddNewLessonForm from './AddNewLessonForm';
+import Modal from './Modal';
 
 export default () => {
 	const [modalState, setModalState] = useState(false);
 	const { user } = useSelector((state: Store) => state);
 
-	const toggleShownModal = () => {
-		setModalState(!modalState);
+	const toggleModalState = () => {
+		setModalState((prev) => !prev);
 	};
 
 	return (
@@ -22,23 +22,13 @@ export default () => {
 					<div className={'panel-block'}>
 						<button
 							className={'button is-fullwidth is-link'}
-							onClick={toggleShownModal}
+							onClick={toggleModalState}
 						>
 							Nowa lekcja
 						</button>
 					</div>
 				)}
-				<div className={`modal ${modalState && 'is-active'}`}>
-					<div className={'modal-background'} />
-					<div className={'modal-content'}>
-						<div className={'box'}>
-							<AddNewLessonForm toggleShownModal={toggleShownModal} />
-						</div>
-					</div>
-					<button className={'modal-close is-large'} onClick={toggleShownModal}>
-						Zamknij
-					</button>
-				</div>
+				<Modal isDisplayed={modalState} toggleModalState={toggleModalState} />
 			</article>
 		</section>
 	);
