@@ -1,28 +1,16 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { Store } from 'store';
 import FlashcardsList from './FlashcardsList';
-import { deleteLesson } from 'store/lessons/actions';
 import NewFlashcardForm from './NewFlashcardForm';
-import CurrentLessonControls from './CurrentLessonControls';
+import Controls from './Controls';
 
 export default () => {
-	const dispatch = useDispatch();
-	const [move, setMove] = useState(false);
-	const { currentLesson } = useSelector((state: Store) => state);
 	const { user } = useSelector((state: Store) => state);
+	const { created, name } = useSelector((state: Store) => state.currentLesson);
 
-	const { id, name, created } = currentLesson;
-
-	const handleDeleteButton = () => {
-		dispatch(deleteLesson(id));
-
-		setMove(true);
-	};
-
-	return !move ? (
+	return (
 		<section className={'section'}>
 			<div className={'container'}>
 				<h1 className={'title'}>{name}</h1>
@@ -34,10 +22,7 @@ export default () => {
 				</p>
 				<div className={'columns'}>
 					<div className={'column is-two-third'}>
-						<CurrentLessonControls
-							handleDeleteButton={handleDeleteButton}
-							setMove={setMove}
-						/>
+						<Controls />
 					</div>
 					<div className={'column'}>
 						<FlashcardsList />
@@ -46,7 +31,5 @@ export default () => {
 				</div>
 			</div>
 		</section>
-	) : (
-		<Redirect to={'/'} />
 	);
 };

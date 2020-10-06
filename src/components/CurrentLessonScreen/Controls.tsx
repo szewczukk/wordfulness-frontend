@@ -1,19 +1,23 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Store } from 'store';
+import { deleteLesson } from 'store/lessons/actions';
 
-type Props = {
-	setMove: (arg: boolean) => void;
-	handleDeleteButton: () => void;
-};
-
-export default (props: Props) => {
-	const { setMove, handleDeleteButton } = props;
-
+export default () => {
+	const history = useHistory();
+	const dispatch = useDispatch();
 	const { user } = useSelector((state: Store) => state);
 	const { id } = useSelector((state: Store) => state.currentLesson);
+
+	const handleReturn = () => {
+		history.push('/');
+	};
+
+	const handleDelete = () => {
+		dispatch(deleteLesson(id));
+	};
 
 	return (
 		<div className={'level'}>
@@ -21,14 +25,14 @@ export default (props: Props) => {
 				<div className={'level-item'}>
 					<button
 						className={'button is-info is-outlined'}
-						onClick={() => setMove(true)}
+						onClick={handleReturn}
 					>
 						Powrót
 					</button>
 				</div>
 				<div className={'level-item'}>
 					{user.usertype !== 'ST' ? (
-						<button className={'button is-danger'} onClick={handleDeleteButton}>
+						<button className={'button is-danger'} onClick={handleDelete}>
 							Usuń
 						</button>
 					) : (
