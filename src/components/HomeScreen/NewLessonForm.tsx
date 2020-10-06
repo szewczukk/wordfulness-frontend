@@ -12,7 +12,7 @@ type State = {
 	name: string;
 };
 
-class AddNewLessonForm extends Component<Props, State> {
+class NewLessonForm extends Component<Props, State> {
 	state = {
 		name: '',
 	};
@@ -76,4 +76,4 @@ class AddNewLessonForm extends Component<Props, State> {
 	}
 }
 
-export default connect(null, mapDispatchToProps)(AddNewLessonForm);
+export default connect(null, mapDispatchToProps)(NewLessonForm);

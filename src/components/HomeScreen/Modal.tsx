@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddNewLessonForm from './AddNewLessonForm';
+import NewLessonForm from './NewLessonForm';
 
 type Props = {
 	isDisplayed: boolean;
@@ -12,7 +12,7 @@ export default ({ isDisplayed, toggleModalState }: Props) => (
 		<div className={'modal-background'} />
 		<div className={'modal-content'}>
 			<div className={'box'}>
-				<AddNewLessonForm onClose={toggleModalState} />
+				<NewLessonForm onClose={toggleModalState} />
 			</div>
 		</div>
 		<button className={'modal-close is-large'} onClick={toggleModalState}>
