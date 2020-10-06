@@ -63,8 +63,8 @@ export default (
 				};
 			} else {
 				const newFlashcards = [
-					...state.flashcards,
 					state.currentFlashcard as Flashcard,
+					...state.flashcards,
 				];
 
 				const newCurrent = newFlashcards.pop();
