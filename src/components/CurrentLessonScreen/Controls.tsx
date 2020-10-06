@@ -8,8 +8,10 @@ import { deleteLesson } from 'store/lessons/actions';
 export default () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
-	const { user } = useSelector((state: Store) => state);
-	const { id } = useSelector((state: Store) => state.currentLesson);
+	const { user, id } = useSelector((state: Store) => ({
+		user: state.user,
+		id: state.currentLesson.id,
+	}));
 
 	const handleReturn = () => {
 		history.push('/');

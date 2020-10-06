@@ -7,8 +7,11 @@ import NewFlashcardForm from './NewFlashcardForm';
 import Controls from './Controls';
 
 export default () => {
-	const { user } = useSelector((state: Store) => state);
-	const { created, name } = useSelector((state: Store) => state.currentLesson);
+	const { user, created, name } = useSelector((state: Store) => ({
+		user: state.user,
+		created: state.currentLesson.created,
+		name: state.currentLesson.name,
+	}));
 
 	return (
 		<section className={'section'}>

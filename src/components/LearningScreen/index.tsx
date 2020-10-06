@@ -9,8 +9,10 @@ import FlashcardControls from './FlashcardControls';
 
 export default () => {
 	const dispatch = useDispatch();
-	const { completed } = useSelector((state: Store) => state.learningSession);
-	const { flashcards } = useSelector((state: Store) => state.currentLesson);
+	const { completed, flashcards } = useSelector((state: Store) => ({
+		completed: state.learningSession.completed,
+		flashcards: state.currentLesson.flashcards,
+	}));
 	const { id } = useParams<{ id: string }>();
 
 	useEffect(() => {
