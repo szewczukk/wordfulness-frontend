@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import { fetchUserAndToken } from '../../store/currentUser/actions';
+import { fetchUserAndToken } from 'store/currentUser/actions';
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
 	bindActionCreators({ fetchUserAndToken }, dispatch);

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchCurrentLesson } from '../../store/currentLesson/actions';
-import { Store } from '../../store';
+import { Store } from 'store';
+import { fetchCurrentLesson } from 'store/currentLesson/actions';
 import FlashcardRow from './FlashcardRow';
 
 interface ParamTypes {

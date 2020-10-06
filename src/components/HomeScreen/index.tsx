@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import { Store } from 'store';
 import LessonsList from './LessonsList';
 import AddNewLessonForm from './AddNewLessonForm';
-import { Store } from '../../store';
 
 export default () => {
 	const [modalState, setModalState] = useState(false);

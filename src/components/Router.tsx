@@ -7,7 +7,7 @@ import CurrentLessonScreen from './CurrentLessonScreen';
 import LoginScreen from './LoginScreen';
 import HomeScreen from './HomeScreen';
 import LearningScreen from './LearningScreen';
-import { Store } from '../store';
+import { Store } from 'store';
 
 export default () => {
 	const { token } = useSelector((state: Store) => state.user);

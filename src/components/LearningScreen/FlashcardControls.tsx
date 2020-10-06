@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Store } from '../../store';
-import { flashcardKnowsAnswer } from '../../store/learningSession/actions';
+import { Store } from 'store';
+import { flashcardKnowsAnswer } from 'store/learningSession/actions';
 
-type Props = {};
-
-export default (props: Props) => {
+export default () => {
 	const [exposed, setExpose] = useState(false);
 	const dispatch = useDispatch();
 	const { currentFlashcard, initialLength, flashcards } = useSelector(

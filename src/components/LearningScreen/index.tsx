@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { fetchCurrentLesson } from '../../store/currentLesson/actions';
-import { createLearningSession as createLearningSessionAction } from '../../store/learningSession/actions';
-import { Store } from '../../store';
+import { Store } from 'store';
+import { fetchCurrentLesson } from 'store/currentLesson/actions';
+import { createLearningSession as createLearningSessionAction } from 'store/learningSession/actions';
 import FlashcardControls from './FlashcardControls';
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
