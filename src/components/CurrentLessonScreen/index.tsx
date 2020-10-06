@@ -3,8 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FlashcardsList from './FlashcardsList';
-import { deleteLesson } from '../store/lessons/actions';
-import { Store } from '../store';
+import { deleteLesson } from '../../store/lessons/actions';
+import { Store } from '../../store';
 import NewFlashcardForm from './NewFlashcardForm';
 import CurrentLessonControls from './CurrentLessonControls';
 

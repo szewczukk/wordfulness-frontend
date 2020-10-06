@@ -6,8 +6,8 @@ import Header from './Header';
 import CurrentLessonScreen from './CurrentLessonScreen';
 import LoginScreen from './LoginScreen';
 import HomeScreen from './HomeScreen';
+import LearningScreen from './LearningScreen';
 import { Store } from '../store';
-import Learning from './LearningScreen';
 
 export default () => {
 	const { token } = useSelector((state: Store) => state.user);
@@ -29,7 +29,7 @@ export default () => {
 							<HomeScreen />
 						</Route>
 						<Route exact path={'/learn/:id'}>
-							<Learning />
+							<LearningScreen />
 						</Route>
 					</>
 				)}

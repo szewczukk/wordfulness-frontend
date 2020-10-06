@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchLessons } from '../store/lessons/actions';
-import { Store } from '../store';
+import { fetchLessons } from '../../store/lessons/actions';
+import { Store } from '../../store';
 
 export default () => {
 	const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Store } from '../store';
+import { Store } from '../../store';
 
 type Props = {
 	setMove: (arg: boolean) => void;

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import LessonsList from './LessonsList';
 import AddNewLessonForm from './AddNewLessonForm';
-import { Store } from '../store';
+import { Store } from '../../store';
 
 export default () => {
 	const [modalState, setModalState] = useState(false);

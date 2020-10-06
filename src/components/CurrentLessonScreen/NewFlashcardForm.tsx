@@ -2,9 +2,9 @@ import React, { Component, createRef } from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { Store } from '../store';
-import { addFlashcardToCurrentLesson } from '../store/currentLesson/actions';
-import { PostFlashcard } from '../store/currentLesson/types';
+import { Store } from '../../store';
+import { addFlashcardToCurrentLesson } from '../../store/currentLesson/actions';
+import { PostFlashcard } from '../../store/currentLesson/types';
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
 	bindActionCreators({ addFlashcardToCurrentLesson }, dispatch);

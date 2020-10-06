@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { addNewLesson } from '../store/lessons/actions';
+import { addNewLesson } from '../../store/lessons/actions';
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
 	bindActionCreators({ addNewLesson }, dispatch);

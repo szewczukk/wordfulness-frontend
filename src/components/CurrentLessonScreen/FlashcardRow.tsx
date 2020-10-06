@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { deleteFlashcardFromCurrentLesson } from '../store/currentLesson/actions';
-import { Store } from '../store';
+import { deleteFlashcardFromCurrentLesson } from '../../store/currentLesson/actions';
+import { Store } from '../../store';
 
 type Props = {
 	id: number;

@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { fetchCurrentLesson } from '../store/currentLesson/actions';
-import { createLearningSession as createLearningSessionAction } from '../store/learningSession/actions';
-import { Store } from '../store';
+import { fetchCurrentLesson } from '../../store/currentLesson/actions';
+import { createLearningSession as createLearningSessionAction } from '../../store/learningSession/actions';
+import { Store } from '../../store';
 import FlashcardControls from './FlashcardControls';
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
@@ -27,7 +27,7 @@ type AllProps = ReturnType<typeof mapDispatchToProps> &
 	ReturnType<typeof mapStateToProps> &
 	RouteComponentProps<RouteInfo>;
 
-class LearningScreen extends Component<AllProps, any> {
+class Index extends Component<AllProps, any> {
 	componentDidMount() {
 		this.props.fetchCurrentLesson(this.props.match.params.id);
 	}
@@ -59,6 +59,4 @@ class LearningScreen extends Component<AllProps, any> {
 	}
 }
 
-export default withRouter(
-	connect(mapStateToProps, mapDispatchToProps)(LearningScreen),
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Index));

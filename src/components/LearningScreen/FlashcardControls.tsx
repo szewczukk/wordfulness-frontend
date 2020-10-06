@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Store } from '../store';
-import { flashcardKnowsAnswer } from '../store/learningSession/actions';
+
+import { Store } from '../../store';
+import { flashcardKnowsAnswer } from '../../store/learningSession/actions';
 
 type Props = {};
 
