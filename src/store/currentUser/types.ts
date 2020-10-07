@@ -2,6 +2,7 @@ export interface CurrentUserState {
 	token: string | undefined;
 	username: string;
 	usertype: string;
+	course: number;
 }
 
 export interface Credentials {

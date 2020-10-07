@@ -9,6 +9,7 @@ const initialState: CurrentUserState = {
 	token: undefined,
 	username: '',
 	usertype: '',
+	course: 0,
 };
 
 export default (
