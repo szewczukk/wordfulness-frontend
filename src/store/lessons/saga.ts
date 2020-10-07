@@ -1,4 +1,4 @@
-import { call, put, takeLatest, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest, takeEvery, select } from 'redux-saga/effects';
 
 import {
 	ADD_NEW_LESSON_TYPE,
@@ -11,7 +11,12 @@ import { DeleteLessonAction } from './types';
 
 function* fetchLessons() {
 	try {
-		const response = yield call(fetch, 'http://127.0.0.1:8000/api/lessons/');
+		const courseId = yield select((store) => store.user.course);
+
+		const response = yield call(
+			fetch,
+			`http://127.0.0.1:8000/api/lessons/?course=${courseId}`,
+		);
 		const result = yield response.json();
 
 		yield put(setFetchedLessons(result));
@@ -22,13 +27,20 @@ function* fetchLessons() {
 
 function* addNewLesson(action: AddNewLessonAction) {
 	try {
+		const courseId = yield select((store) => store.user.course);
+
+		const body = {
+			...action.payload,
+			course: courseId,
+		};
+
 		yield call(fetch, 'http://127.0.0.1:8000/api/lessons/', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(action.payload),
+			body: JSON.stringify(body),
 		});
 
 		yield call(fetchLessons);

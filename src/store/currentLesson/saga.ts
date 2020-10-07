@@ -18,9 +18,11 @@ function* fetchCurrentLesson(action: FetchCurrentLesson) {
 	try {
 		const { payload } = action;
 
+		const courseId = yield select((store) => store.user.course);
+
 		const lessonResponse = yield call(
 			fetch,
-			`http://127.0.0.1:8000/api/lessons/${payload}/`,
+			`http://127.0.0.1:8000/api/lessons/${payload}/?course=${courseId}`,
 		);
 		const flashcardsResponse = yield call(
 			fetch,
