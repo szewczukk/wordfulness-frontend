@@ -57,6 +57,8 @@ class NewFlashcardForm extends Component<Props, State> {
 		if (this.frontRef.current && this.backRef.current) {
 			this.frontRef.current.value = '';
 			this.backRef.current.value = '';
+
+			this.frontRef.current.focus();
 		}
 	};
 
