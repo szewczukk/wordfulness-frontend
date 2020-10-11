@@ -7,10 +7,11 @@ import CurrentLessonScreen from './CurrentLessonScreen';
 import LoginScreen from './LoginScreen';
 import HomeScreen from './HomeScreen';
 import LearningScreen from './LearningScreen';
+import AdminScreen from './AdminScreen';
 import { Store } from 'store';
 
 export default () => {
-	const { token } = useSelector((state: Store) => state.user);
+	const { token, usertype } = useSelector((state: Store) => state.user);
 
 	return (
 		<BrowserRouter>
@@ -20,7 +21,7 @@ export default () => {
 					<Route path={'*'}>
 						<LoginScreen />
 					</Route>
-				) : (
+				) : usertype !== 'OW' ? (
 					<>
 						<Route exact path={'/lesson/:id'}>
 							<CurrentLessonScreen />
@@ -32,6 +33,10 @@ export default () => {
 							<LearningScreen />
 						</Route>
 					</>
+				) : (
+					<Route path={'*'}>
+						<AdminScreen />
+					</Route>
 				)}
 			</Switch>
 		</BrowserRouter>
