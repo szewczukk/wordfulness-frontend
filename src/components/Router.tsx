@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Header from './Header';
@@ -18,9 +18,14 @@ export default () => {
 			<Header />
 			<Switch>
 				{!token ? (
-					<Route path={'*'}>
-						<LoginScreen />
-					</Route>
+					<>
+						<Route path={'*'}>
+							<Redirect to={'/'} />
+						</Route>
+						<Route path={'/'}>
+							<LoginScreen />
+						</Route>
+					</>
 				) : usertype !== 'OW' ? (
 					<>
 						<Route exact path={'/lesson/:id'}>
@@ -34,9 +39,14 @@ export default () => {
 						</Route>
 					</>
 				) : (
-					<Route path={'*'}>
-						<AdminScreen />
-					</Route>
+					<>
+						<Route path={'*'}>
+							<Redirect to={'/'} />
+						</Route>
+						<Route path={'/'}>
+							<AdminScreen />
+						</Route>
+					</>
 				)}
 			</Switch>
 		</BrowserRouter>
